@@ -1,0 +1,76 @@
+<h1>Country name and Flags</h1>
+<div class="container" id="bg">
+  <!-- <select class="form-select" name="" id="">
+    <option value="" selected>Search any country...</option>
+    @for (country of countries; track $index) {
+    <option [value]="country.name.common">{{ country.name.common }}</option>
+    }
+  </select> -->
+  <div class="input-group mb-3">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Search by country name"
+      [(ngModel)]="searchText"
+    />
+    <button (click)="search()" class="btn btn-primary">Search</button>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @if (filteredCountries.length > 0) { @for (country of filteredCountries;
+      track $index) {
+      <div class="col">
+        <div class="card-group">
+          <div class="card bg-dark text-white">
+            <img
+              [src]="country.flags.png"
+              class="card-img-top m-auto p-2"
+              alt="..."
+              width="300px"
+              height="auto"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ country.name.common }}</h5>
+              <p class="card-text"><b>cca2:</b> {{ country.cca2 }}</p>
+              <p class="card-text"><b>Region:</b> {{ country.region }}</p>
+              <p class="card-text"><b>Capital:</b> {{ country.capital }}</p>
+              <p class="card-text">
+                <b>Population:</b> {{ country.population }}
+              </p>
+              <button
+                [routerLink]="'/country/' + country.cca2"
+                class="btn btn-primary"
+              >
+                More info
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      }}
+    </div>
+  </div>
+
+  <!-- <table class="table table-hover mt-2">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Country Name</th>
+        <th scope="col">Population</th>
+        <th scope="col">Flag</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (filteredCountries.length > 0) { @for (country of filteredCountries;
+      track $index) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ country.name.common }}</td>
+        <td>{{ country.population }}</td>
+        <td><img [src]="country.flags.png" height="auto" width="100px" /></td>
+      </tr>
+      } }
+    </tbody>
+  </table> -->
+</div>

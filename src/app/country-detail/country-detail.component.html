@@ -1,0 +1,17 @@
+@if (!isLoading) {
+<div class="container mt-3">
+  <img [src]="countryDetails[0].flags.png" alt="" class="m-auto" />
+
+  <p><b>Common Name:</b> {{ countryDetails[0].name.common }}</p>
+  <p><b>Official Name:</b> {{ countryDetails[0].name.official }}</p>
+  <p><b>Capital:</b> {{ countryDetails[0].capital }}</p>
+  <p><b>Region:</b> {{ countryDetails[0].region }}</p>
+  <p><b>Subregion:</b> {{ countryDetails[0].subregion }}</p>
+  <p><b>Population:</b> {{ countryDetails[0].population }}</p>
+</div>
+} @if (isLoading) {
+<div class="spinner-grow text-danger text-center" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+}
