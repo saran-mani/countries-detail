@@ -9,15 +9,17 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [FormsModule,RouterModule],
   templateUrl: './country-home.component.html',
-  styleUrl: './country-home.component.css'
+  styleUrls: ['./country-home.component.css']
 })
 export class CountryHomeComponent {
   searchText: string = '';
   countries: Country[] = [];
   filteredCountries: Country[] = [];
   title = 'country-details';
+  isLoading: boolean=true;
   constructor(private countryService: CountryService) {}
   ngOnInit(): void {
+    this.loading()
     this.onGetAllCountry();
   }
   onGetAllCountry(): void {
@@ -42,5 +44,10 @@ export class CountryHomeComponent {
           .includes(this.searchText.toLowerCase())
       );
     }
+  }
+  loading(): void {
+    setTimeout(() => {
+      this.isLoading = false; // Set isLoading to false when data is loaded
+    }, 2000);
   }
 }

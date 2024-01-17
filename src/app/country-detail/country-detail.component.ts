@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from '../interface/country';
 import { CountryService } from '../service/country.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'country-detail',
   standalone: true,
-  imports: [],
+  imports: [ CommonModule,RouterModule],
   templateUrl: './country-detail.component.html',
   styleUrl: './country-detail.component.css',
-  providers: [CountryService, CommonModule],
+  providers: [CountryService,],
 })
 export class CountryDetailComponent implements OnInit {
   countryDetails: Country[] = [];
   isLoading: boolean = true; // Variable to track loading state
-
+  googleMapsLink = 'https://www.google.com/maps/place/';
+country: any;
   constructor(
     private countryService: CountryService,
     private route: ActivatedRoute
@@ -27,20 +28,20 @@ export class CountryDetailComponent implements OnInit {
   }
   onAssignParams(): void {
     this.route.params.subscribe((params) => {
-      const cca2Code = params['cca2'];
+      const cca3Code = params['cca3'];
 
-      if (cca2Code) {
-        this.loadCountryDetails(cca2Code);
+      if (cca3Code) {
+        this.loadCountryDetails(cca3Code);
       }
     });
   }
-  loadCountryDetails(cca2: string) {
-    this.countryService.getCountryByCode(cca2).subscribe({
-      next: (data: Country) => {
+  loadCountryDetails(cca3: string) {
+    this.countryService.getCountryByCode(cca3).subscribe({
+      next: (data: Country[]) => {
         if (Array.isArray(data)) {
           if (data.length > 0) {
             this.countryDetails = data;
-            // console.log('Country Details:', this.countryDetails);
+            console.log(this.countryDetails);
           }
         } else {
           // Handle the case where a single Country is returned

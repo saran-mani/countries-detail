@@ -9,8 +9,14 @@ export interface Country {
   region: string;
   subregion: string;
   population: number;
+  latlng: number[];
+  area: number;
+  borders?: string[];
+  maps: {
+    googleMaps: string;
+  };
   flags: {
     png: string;
   };
-  cca2: string;
+  cca3: string;
 }

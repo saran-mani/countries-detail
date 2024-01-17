@@ -1,5 +1,5 @@
-<h1>Country name and Flags</h1>
-<div class="container" id="bg">
+<div class="container-fluid pt-3" id="bg">
+  <h1 class="text-center text-white">Countries data</h1>
   <!-- <select class="form-select" name="" id="">
     <option value="" selected>Search any country...</option>
     @for (country of countries; track $index) {
@@ -10,19 +10,20 @@
     <input
       class="form-control"
       type="text"
+      name="searc"
       placeholder="Search by country name"
       [(ngModel)]="searchText"
     />
     <button (click)="search()" class="btn btn-primary">Search</button>
   </div>
-
+  @if (!isLoading) {
   <div class="container mt-3">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @if (filteredCountries.length > 0) { @for (country of filteredCountries;
       track $index) {
       <div class="col">
         <div class="card-group">
-          <div class="card bg-dark text-white">
+          <div class="card card-white text-dark">
             <img
               [src]="country.flags.png"
               class="card-img-top m-auto p-2"
@@ -32,14 +33,13 @@
             />
             <div class="card-body">
               <h5 class="card-title text-center">{{ country.name.common }}</h5>
-              <p class="card-text"><b>cca2:</b> {{ country.cca2 }}</p>
               <p class="card-text"><b>Region:</b> {{ country.region }}</p>
               <p class="card-text"><b>Capital:</b> {{ country.capital }}</p>
               <p class="card-text">
                 <b>Population:</b> {{ country.population }}
               </p>
               <button
-                [routerLink]="'/country/' + country.cca2"
+                [routerLink]="'/country/' + country.cca3"
                 class="btn btn-primary"
               >
                 More info
@@ -51,7 +51,12 @@
       }}
     </div>
   </div>
-
+  }@else{
+  <div class="lds-ripple">
+    <div></div>
+    <div></div>
+  </div>
+  }
   <!-- <table class="table table-hover mt-2">
     <thead>
       <tr>

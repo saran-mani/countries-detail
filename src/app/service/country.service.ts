@@ -11,6 +11,7 @@ export class CountryService {
 
   getAllCountries(): Observable<Country[]> {
     return this.http.get<Country[]>(`https://restcountries.com/v3.1/all`).pipe(
+
       map((data) =>
         data.map((country) => ({
           name: {
@@ -21,19 +22,49 @@ export class CountryService {
           region: country.region,
           subregion:country.subregion,
           population: country.population,
+          latlng:country.latlng,
+          area:country.area,
+          borders:country.borders,
+          maps:{
+            googleMaps:country.maps.googleMaps
+          },
           flags: {
             png: country.flags.png,
           },
-          cca2: country.cca2,
+          cca3: country.cca3.toLowerCase(),
         }))
       ),
       map((countries) => this.alphabetizeCountries(countries))
     );
   }
-  getCountryByCode(cca2: string): Observable<Country> {
-    return this.http.get<Country>(
-      `https://restcountries.com/v3.1/alpha/${cca2}`
-    );
+  getCountryByCode(cca3: string): Observable<Country[]> {
+    return this.http.get<Country[]>(
+      `https://restcountries.com/v3.1/alpha/${cca3}`
+    ).pipe(
+      map((data) =>
+        data.map((country) => ({
+          name: {
+            common: country.name.common,
+            official: country.name.official,
+          },
+          capital: country.capital,
+          region: country.region,
+          subregion:country.subregion,
+          population: country.population,
+          latlng:country.latlng,
+          area:country.area,
+          borders:country.borders,
+          maps:{
+            googleMaps:country.maps.googleMaps
+          },
+          flags: {
+            png: country.flags.png,
+          },
+          cca3: country.cca3.toLowerCase(),
+        }))
+      ),
+      map((countries) => this.alphabetizeCountries(countries))
+    )
   }
   private alphabetizeCountries(countries: Country[]): Country[] {
     return countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
