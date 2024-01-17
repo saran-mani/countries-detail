@@ -61,7 +61,7 @@
         <th scope="row">Borders</th>
         <td>
           @for (border of countryDetails[0].borders; track $index) {
-         <a [routerLink]="'/country/' + border.toLowerCase()"> {{ border + "," }}</a>
+         <a (click)="scroll(0,0)" [routerLink]="'/country/' + border.toLowerCase()"> {{ border + "," }}</a>
           }
         </td>
       </tr>

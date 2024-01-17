@@ -48,6 +48,6 @@ export class CountryHomeComponent {
   loading(): void {
     setTimeout(() => {
       this.isLoading = false; // Set isLoading to false when data is loaded
-    }, 2000);
+    }, 1000);
   }
 }

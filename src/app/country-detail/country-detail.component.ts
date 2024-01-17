@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   providers: [CountryService,],
 })
 export class CountryDetailComponent implements OnInit {
+
   countryDetails: Country[] = [];
   isLoading: boolean = true; // Variable to track loading state
   googleMapsLink = 'https://www.google.com/maps/place/';
@@ -53,9 +54,12 @@ country: any;
       complete: () => console.log('Done Retrieving country details'),
     });
   }
+  scroll(arg0: number,arg1: number) {
+    window.scroll(arg0,arg1)
+  }
   loading(): void {
     setTimeout(() => {
       this.isLoading = false; // Set isLoading to false when data is loaded
-    }, 2000);
+    }, 1000);
   }
 }
