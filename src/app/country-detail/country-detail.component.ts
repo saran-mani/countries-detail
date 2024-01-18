@@ -7,17 +7,17 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'country-detail',
   standalone: true,
-  imports: [ CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './country-detail.component.html',
   styleUrl: './country-detail.component.css',
-  providers: [CountryService,],
+  providers: [CountryService],
 })
 export class CountryDetailComponent implements OnInit {
-
   countryDetails: Country[] = [];
+  // countryCode: string = this.countryDetails[0].cca3;
   isLoading: boolean = true; // Variable to track loading state
   googleMapsLink = 'https://www.google.com/maps/place/';
-country: any;
+
   constructor(
     private countryService: CountryService,
     private route: ActivatedRoute
@@ -54,8 +54,11 @@ country: any;
       complete: () => console.log('Done Retrieving country details'),
     });
   }
-  scroll(arg0: number,arg1: number) {
-    window.scroll(arg0,arg1)
+  getLanguageArray() {
+    return Object.values(this.countryDetails[0].languages);
+  }
+  scroll(arg0: number, arg1: number) {
+    window.scroll(arg0, arg1);
   }
   loading(): void {
     setTimeout(() => {

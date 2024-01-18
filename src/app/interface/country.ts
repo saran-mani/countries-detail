@@ -15,6 +15,13 @@ export interface Country {
   maps: {
     googleMaps: string;
   };
+  languages: Object;
+  demonyms: {
+    eng: {
+      f: string;
+      m: string;
+    };
+  };
   flags: {
     png: string;
   };

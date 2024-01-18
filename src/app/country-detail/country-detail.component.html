@@ -5,7 +5,8 @@
   <img [src]="countryDetails[0].flags.png" alt="" class="mx-auto d-block" />
   <table class="table mt-5 table-bordered border-white table-primary">
     <tbody>
-      <h5>Basic Information:</h5>
+      <!-- Basic Information -->
+      <p>Basic Information:</p>
       <tr>
         <th scope="row">Common Name</th>
         <td>{{ countryDetails[0].name.common }}</td>
@@ -31,8 +32,8 @@
         <td>{{ countryDetails[0].population }}</td>
       </tr>
 
-      <!-- Add more key-value pairs as needed -->
-      <h5 class="mt-3">Geographical Information</h5>
+      <!-- Geographical Information -->
+      <p class="mt-3">Geographical Information</p>
       <tr>
         <th scope="row">latlang</th>
         <td>
@@ -61,7 +62,12 @@
         <th scope="row">Borders</th>
         <td>
           @for (border of countryDetails[0].borders; track $index) {
-         <a (click)="scroll(0,0)" [routerLink]="'/country/' + border.toLowerCase()"> {{ border + "," }}</a>
+          <a
+            (click)="scroll(0, 0)"
+            [routerLink]="'/country/' + border.toLowerCase()"
+          >
+            {{ border + "," }}</a
+          >
           }
         </td>
       </tr>
@@ -69,8 +75,25 @@
       <tr>
         <th scope="row">google map</th>
         <td>
-          <a [href]="countryDetails[0].maps.googleMaps" target="_blank" > open in map</a>
-         
+          <a [href]="countryDetails[0].maps.googleMaps" target="_blank">
+            open in map</a
+          >
+        </td>
+      </tr>
+      <p class="mt-3">Cultural and Linguistic Information:</p>
+      <tr>
+        <th scope="row">Languages</th>
+        <td>
+          @for (lang of getLanguageArray(); track $index) {
+          {{ lang + "," }}
+          }
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Demonyms</th>
+        <td>
+          <p>Female: {{ countryDetails[0].demonyms.eng.f }}</p>
+          <p>Male: {{ countryDetails[0].demonyms.eng.m }}</p>
         </td>
       </tr>
     </tbody>
