@@ -1,20 +1,29 @@
 <div class="container-fluid pt-3" id="bg">
-  <div class="input-group mb-3">
-    <input
+  <div class="w-100">
+    <!-- <input
       class="form-control"
       type="text"
       name="searc"
       placeholder="Search by country name"
       [(ngModel)]="searchText"
     />
-    <button (click)="search()" class="btn btn-primary">Search</button>
+    <button  class="btn btn-primary">Search</button
+    > -->
+    <ng-select [(ngModel)]="selectedCountry" (ngModelChange)="search()" placeholder="Search country.." >
+      @for (country of filteredCountries; track $index) {
+      <ng-option  [value]="country.name.common">{{
+        country.name.common
+      }}</ng-option>
+      }
+    </ng-select>
   </div>
+
   @if (!isLoading) {
   <div class="container mt-3">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @if (filteredCountries.length > 0) { @for (country of filteredCountries;
       track $index) {
-      <div class="col ">
+      <div class="col">
         <div class="card-group">
           <div class="card card-white text-dark">
             <img
@@ -31,10 +40,7 @@
               <p class="card-text">
                 <b>Population:</b> {{ country.population }}
               </p>
-              <button
-                [routerLink]="'/country/' + country.cca3"
-                class="btn"
-              >
+              <button [routerLink]="'/country/' + country.cca3" class="btn">
                 More info
               </button>
             </div>

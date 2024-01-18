@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { Country } from '../interface/country';
 import { CountryService } from '../service/country.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'country-home',
   standalone: true,
-  imports: [FormsModule,RouterModule],
+  imports: [FormsModule,RouterModule,NgSelectModule,ReactiveFormsModule],
   templateUrl: './country-home.component.html',
   styleUrls: ['./country-home.component.css']
 })
 export class CountryHomeComponent {
-  searchText: string = '';
   countries: Country[] = [];
   filteredCountries: Country[] = [];
   title = 'country-details';
   isLoading: boolean=true;
+  selectedCountry: any;
   constructor(private countryService: CountryService) {}
   ngOnInit(): void {
     // this.loading()
@@ -36,15 +37,14 @@ export class CountryHomeComponent {
   }
 
   search() {
-    if (this.searchText.trim() === '') {
-      this.filteredCountries = this.countries;
-      this.isLoading = false;
-    } else {
+    if (this.selectedCountry) {
       this.filteredCountries = this.countries.filter((country) =>
-        country.name.common
-          .toLowerCase()
-          .includes(this.searchText.toLowerCase())
+        country.name.common.toLowerCase() === this.selectedCountry.toLowerCase()
       );
+    } else {
+      // Handle the case when no country is selected
+      this.filteredCountries = this.countries;
     }
   }
+  
 }
