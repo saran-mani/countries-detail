@@ -42,7 +42,6 @@ export class CountryHomeComponent {
         country.name.common.toLowerCase() === this.selectedCountry.toLowerCase()
       );
     } else {
-      // Handle the case when no country is selected
       this.filteredCountries = this.countries;
     }
   }

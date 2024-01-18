@@ -43,12 +43,9 @@ export class CountryDetailComponent implements OnInit {
           if (data.length > 0) {
             this.countryDetails = data;
             this.isLoading = false;
-            console.log(this.countryDetails);
           }
         } else {
-          // Handle the case where a single Country is returned
           this.countryDetails = [data];
-          // console.log('Country Details:', this.countryDetails);
         }
       },
       error: (error: any) => console.log(error),
