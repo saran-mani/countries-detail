@@ -1,11 +1,4 @@
 <div class="container-fluid pt-3" id="bg">
-  <h1 class="text-center text-white">Countries data</h1>
-  <!-- <select class="form-select" name="" id="">
-    <option value="" selected>Search any country...</option>
-    @for (country of countries; track $index) {
-    <option [value]="country.name.common">{{ country.name.common }}</option>
-    }
-  </select> -->
   <div class="input-group mb-3">
     <input
       class="form-control"
@@ -21,7 +14,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @if (filteredCountries.length > 0) { @for (country of filteredCountries;
       track $index) {
-      <div class="col">
+      <div class="col ">
         <div class="card-group">
           <div class="card card-white text-dark">
             <img
@@ -40,7 +33,7 @@
               </p>
               <button
                 [routerLink]="'/country/' + country.cca3"
-                class="btn btn-primary"
+                class="btn"
               >
                 More info
               </button>
@@ -57,25 +50,4 @@
     <div></div>
   </div>
   }
-  <!-- <table class="table table-hover mt-2">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Country Name</th>
-        <th scope="col">Population</th>
-        <th scope="col">Flag</th>
-      </tr>
-    </thead>
-    <tbody>
-      @if (filteredCountries.length > 0) { @for (country of filteredCountries;
-      track $index) {
-      <tr>
-        <td>{{ $index + 1 }}</td>
-        <td>{{ country.name.common }}</td>
-        <td>{{ country.population }}</td>
-        <td><img [src]="country.flags.png" height="auto" width="100px" /></td>
-      </tr>
-      } }
-    </tbody>
-  </table> -->
 </div>

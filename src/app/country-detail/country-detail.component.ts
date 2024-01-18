@@ -24,7 +24,7 @@ export class CountryDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loading();
+    // this.loading();
     this.onAssignParams();
   }
   onAssignParams(): void {
@@ -42,6 +42,7 @@ export class CountryDetailComponent implements OnInit {
         if (Array.isArray(data)) {
           if (data.length > 0) {
             this.countryDetails = data;
+            this.isLoading = false;
             console.log(this.countryDetails);
           }
         } else {
@@ -60,9 +61,9 @@ export class CountryDetailComponent implements OnInit {
   scroll(arg0: number, arg1: number) {
     window.scroll(arg0, arg1);
   }
-  loading(): void {
-    setTimeout(() => {
-      this.isLoading = false; // Set isLoading to false when data is loaded
-    }, 1000);
-  }
+  // loading(): void {
+  //   setTimeout(() => {
+  //      // Set isLoading to false when data is loaded
+  //   }, 1000);
+  // }
 }

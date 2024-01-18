@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 /* loding-animatio */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+body{
+  background-color: #424874;
+}
 .lds-ripple {
     display: inline-block;
     position: relative;

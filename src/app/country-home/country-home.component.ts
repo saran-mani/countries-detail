@@ -19,13 +19,15 @@ export class CountryHomeComponent {
   isLoading: boolean=true;
   constructor(private countryService: CountryService) {}
   ngOnInit(): void {
-    this.loading()
+    // this.loading()
     this.onGetAllCountry();
   }
   onGetAllCountry(): void {
     this.countryService.getAllCountries().subscribe({
       next: (response) => {
         this.countries = response;
+      this.isLoading = false; // Set isLoading to false when data is loaded
+
         this.filteredCountries = response;
       },
       error: (error) => console.log(error),
@@ -35,19 +37,14 @@ export class CountryHomeComponent {
 
   search() {
     if (this.searchText.trim() === '') {
-      this.filteredCountries = this.countries; // Reset to all countries if search is empty
+      this.filteredCountries = this.countries;
+      this.isLoading = false;
     } else {
-      // Filter countries based on the search text
       this.filteredCountries = this.countries.filter((country) =>
         country.name.common
           .toLowerCase()
           .includes(this.searchText.toLowerCase())
       );
     }
-  }
-  loading(): void {
-    setTimeout(() => {
-      this.isLoading = false; // Set isLoading to false when data is loaded
-    }, 1000);
   }
 }

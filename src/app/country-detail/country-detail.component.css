@@ -3,8 +3,15 @@
 }
 #bg{
     background-color: #03045e;
-
 }
+#table-subheader{
+  background-color: #03055e80;
+  color: white;
+}
+th,td{
+color: #424874;
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;

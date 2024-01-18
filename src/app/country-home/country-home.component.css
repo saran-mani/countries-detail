@@ -1,8 +1,12 @@
 
 #bg{
-    background-color: #03045e;
+    background-color: #424874;
     background-size: 100%;
     height: 100%;
+}
+.btn{
+    background-color: #424874;
+    color:#F4EEFF;
 }
 *{
     font-family: "Josefin Sans", sans-serif;
