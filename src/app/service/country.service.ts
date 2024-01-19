@@ -72,4 +72,7 @@ export class CountryService {
   private alphabetizeCountries(countries: Country[]): Country[] {
     return countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
   }
+  getCountryByRegion(region:string):Observable<Country[]>{
+    return this.http.get<Country[]>(`https://restcountries.com/v3.1/region/${region}`).pipe(map((countries) => this.alphabetizeCountries(countries)))
+  }
 }

@@ -1,21 +1,28 @@
 <div class="container-fluid pt-3" id="bg">
-  <div class="w-100">
-    <!-- <input
-      class="form-control"
-      type="text"
-      name="searc"
-      placeholder="Search by country name"
-      [(ngModel)]="searchText"
-    />
-    <button  class="btn btn-primary">Search</button
-    > -->
-    <ng-select [(ngModel)]="selectedCountry" (ngModelChange)="search()" placeholder="Search country.." >
+  <div class="input-group">
+    <ng-select
+      [(ngModel)]="selectedCountry"
+      placeholder="Search country.."
+    >
       @for (country of filteredCountries; track $index) {
-      <ng-option  [value]="country.name.common">{{
+      <ng-option [value]="country.name.common">{{
         country.name.common
       }}</ng-option>
       }
+    </ng-select
+    ><button (click)="search()" class="btn btn-primary">Search</button>
+
+  </div>
+  <div class="input-group">
+    <ng-select
+      [(ngModel)]="selectedRegion"
+      placeholder="Search by region."
+    >
+      @for (region of regions; track $index) {
+      <ng-option [value]="region">{{region }}</ng-option>
+      }
     </ng-select>
+    <button (click)="onGetCountryByRegion(selectedRegion)" class="btn btn-primary">Search</button>
   </div>
 
   @if (!isLoading) {
