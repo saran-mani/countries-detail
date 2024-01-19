@@ -14,8 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CountryDetailComponent implements OnInit {
   countryDetails: Country[] = [];
-  // countryCode: string = this.countryDetails[0].cca3;
-  isLoading: boolean = true; // Variable to track loading state
+  isLoading: boolean = true;
   googleMapsLink = 'https://www.google.com/maps/place/';
 
   constructor(
@@ -58,9 +57,4 @@ export class CountryDetailComponent implements OnInit {
   scroll(arg0: number, arg1: number) {
     window.scroll(arg0, arg1);
   }
-  // loading(): void {
-  //   setTimeout(() => {
-  //      // Set isLoading to false when data is loaded
-  //   }, 1000);
-  // }
 }

@@ -23,14 +23,13 @@ export class CountryHomeComponent {
 
   constructor(private countryService: CountryService) {}
   ngOnInit(): void {
-    // this.loading()
     this.onGetAllCountry();
   }
   onGetAllCountry(): void {
     this.countryService.getAllCountries().subscribe({
       next: (response) => {
         this.countries = response;
-        this.isLoading = false; // Set isLoading to false when data is loaded
+        this.isLoading = false;
         this.filteredCountries = response;
       },
       error: (error) => console.log(error),
@@ -38,7 +37,7 @@ export class CountryHomeComponent {
     });
   }
   onGetCountryByRegion(region: string) {
-    console.log(region)
+    console.log(region);
     this.countryService.getCountryByRegion(region).subscribe({
       next: (response) => {
         (this.filteredCountries = response), (this.isLoading = false);
@@ -48,7 +47,7 @@ export class CountryHomeComponent {
     });
   }
   search() {
-    console.log(this.selectedCountry)
+    console.log(this.selectedCountry);
     if (this.selectedCountry) {
       this.filteredCountries = this.countries.filter(
         (country) =>

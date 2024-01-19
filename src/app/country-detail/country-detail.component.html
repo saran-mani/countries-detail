@@ -3,7 +3,7 @@
   <h1 class="text-center text-light">{{ countryDetails[0].name.common }}</h1>
   <img [src]="countryDetails[0].flags.png" alt="" class="mx-auto d-block" />
   <table class="table mt-5 table-bordered">
-    <tbody >
+    <tbody>
       <tr>
         <td colspan="2" id="table-subheader">Basic Informaation:</td>
       </tr>
@@ -31,8 +31,6 @@
         <th scope="row">Population</th>
         <td>{{ countryDetails[0].population }}</td>
       </tr>
-
-
       <tr>
         <td colspan="2" id="table-subheader">Geographical Information</td>
       </tr>
@@ -82,7 +80,9 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2" id="table-subheader">Cultural and Linguistic Information:</td>
+        <td colspan="2" id="table-subheader">
+          Cultural and Linguistic Information:
+        </td>
       </tr>
       <tr>
         <th scope="row">Languages</th>

@@ -12,7 +12,7 @@
       </div>
       <div class="col-1">
         <button (click)="search()" class="btn">
-          <img src="assets/search.svg" alt="">
+          <img src="assets/search.svg" alt="" />
         </button>
       </div>
     </div>
@@ -25,23 +25,14 @@
         </ng-select>
       </div>
       <div class="col-3">
-        <button
-          (click)="onGetCountryByRegion(selectedRegion)"
-          class="btn"
-        ><img src="assets/search.svg" alt="">
+        <button (click)="onGetCountryByRegion(selectedRegion)" class="btn">
+          <img src="assets/search.svg" alt="" />
         </button>
       </div>
     </div>
   </div>
-  <!-- <div class="input-group">
-   
-  </div>
-  <div class="input-group">
-  
-  </div> -->
-
   @if (!isLoading) {
-  <div class="container mt-3 " id="countries-container">
+  <div class="container mt-3" id="countries-container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @if (filteredCountries.length > 0) { @for (country of filteredCountries;
       track $index) {
